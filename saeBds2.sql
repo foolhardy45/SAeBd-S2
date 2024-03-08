@@ -9,11 +9,11 @@
 ------------------------------------------------------------
 CREATE TABLE public.utilisateur(
 	id_utilisateur   INT   ,
-	login            VARCHAR   ,
-	email            VARCHAR   ,
-	nom              VARCHAR   ,
-	pwd              VARCHAR   ,
-	user_role        VARCHAR    ,
+	login            Varchar (50)  ,
+	email            Varchar (50)  ,
+	nom              Varchar (50)  ,
+	pwd              Varchar (50)  ,
+	user_role        Varchar (50)   ,
 	CONSTRAINT utilisateur_PK PRIMARY KEY (id_utilisateur)
 )WITHOUT OIDS;
 
@@ -23,7 +23,7 @@ CREATE TABLE public.utilisateur(
 ------------------------------------------------------------
 CREATE TABLE public.etat(
 	id_etat   INT   ,
-	libelle   VARCHAR (50)   ,
+	libelle   Varchar (50)   ,
 	CONSTRAINT etat_PK PRIMARY KEY (id_etat)
 )WITHOUT OIDS;
 
@@ -46,7 +46,7 @@ CREATE TABLE public.commande(
 ------------------------------------------------------------
 CREATE TABLE public.materiau(
 	id_materiau        INT   ,
-	libelle_materiau   VARCHAR (50)   ,
+	libelle_materiau   Varchar (50)   ,
 	CONSTRAINT materiau_PK PRIMARY KEY (id_materiau)
 )WITHOUT OIDS;
 
@@ -56,7 +56,7 @@ CREATE TABLE public.materiau(
 ------------------------------------------------------------
 CREATE TABLE public.type_meuble(
 	id_type        INT   ,
-	libelle_type   VARCHAR   ,
+	libelle_type   Varchar (50)  ,
 	CONSTRAINT type_meuble_PK PRIMARY KEY (id_type)
 )WITHOUT OIDS;
 
@@ -66,12 +66,12 @@ CREATE TABLE public.type_meuble(
 ------------------------------------------------------------
 CREATE TABLE public.meuble(
 	id_meuble     INT   ,
-	nom_meuble    VARCHAR   ,
+	nom_meuble    Varchar (50)  ,
 	largeur       INT   ,
 	hauteur       INT   ,
 	prix_meuble   FLOAT   ,
-	fournisseur   VARCHAR   ,
-	marque        VARCHAR   ,
+	fournisseur   Varchar (50)  ,
+	marque        Varchar (50)  ,
 	id_type       INT    ,
 	CONSTRAINT meuble_PK PRIMARY KEY (id_meuble)
 
