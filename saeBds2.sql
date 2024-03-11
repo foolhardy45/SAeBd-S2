@@ -9,7 +9,7 @@ SET SEARCH_PATH TO ikeem;
 ------------------------------------------------------------
 -- Table: utilisateur
 ------------------------------------------------------------
-CREATE TABLE public.utilisateur(
+CREATE TABLE ikeem.utilisateur(
 	id_utilisateur   INT  NOT NULL ,
 	login            VARCHAR  NOT NULL ,
 	email            VARCHAR  NOT NULL ,
@@ -23,7 +23,7 @@ CREATE TABLE public.utilisateur(
 ------------------------------------------------------------
 -- Table: etat
 ------------------------------------------------------------
-CREATE TABLE public.etat(
+CREATE TABLE ikeem.etat(
 	id_etat   INT  NOT NULL ,
 	libelle   VARCHAR  NOT NULL  ,
 	CONSTRAINT etat_PK PRIMARY KEY (id_etat)
@@ -33,22 +33,22 @@ CREATE TABLE public.etat(
 ------------------------------------------------------------
 -- Table: commande
 ------------------------------------------------------------
-CREATE TABLE public.commande(
+CREATE TABLE ikeem.commande(
 	id_commande      INT  NOT NULL ,
 	date_achat       DATE  NOT NULL ,
 	id_etat          INT  NOT NULL ,
 	id_utilisateur   INT  NOT NULL  ,
 	CONSTRAINT commande_PK PRIMARY KEY (id_commande)
 
-	,CONSTRAINT commande_etat_FK FOREIGN KEY (id_etat) REFERENCES public.etat(id_etat)
-	,CONSTRAINT commande_utilisateur0_FK FOREIGN KEY (id_utilisateur) REFERENCES public.utilisateur(id_utilisateur)
+	,CONSTRAINT commande_etat_FK FOREIGN KEY (id_etat) REFERENCES ikeem.etat(id_etat)
+	,CONSTRAINT commande_utilisateur0_FK FOREIGN KEY (id_utilisateur) REFERENCES ikeem.utilisateur(id_utilisateur)
 )WITHOUT OIDS;
 
 
 ------------------------------------------------------------
 -- Table: materiau
 ------------------------------------------------------------
-CREATE TABLE public.materiau(
+CREATE TABLE ikeem.materiau(
 	id_materiau        INT  NOT NULL ,
 	libelle_materiau   VARCHAR  NOT NULL  ,
 	CONSTRAINT materiau_PK PRIMARY KEY (id_materiau)
@@ -58,7 +58,7 @@ CREATE TABLE public.materiau(
 ------------------------------------------------------------
 -- Table: type_meuble
 ------------------------------------------------------------
-CREATE TABLE public.type_meuble(
+CREATE TABLE ikeem.type_meuble(
 	id_type        INT  NOT NULL ,
 	libelle_type   VARCHAR  NOT NULL  ,
 	CONSTRAINT type_meuble_PK PRIMARY KEY (id_type)
@@ -68,7 +68,7 @@ CREATE TABLE public.type_meuble(
 ------------------------------------------------------------
 -- Table: meuble
 ------------------------------------------------------------
-CREATE TABLE public.meuble(
+CREATE TABLE ikeem.meuble(
 	id_meuble     INT  NOT NULL ,
 	nom_meuble    VARCHAR  NOT NULL ,
 	largeur       INT  NOT NULL ,
@@ -80,39 +80,37 @@ CREATE TABLE public.meuble(
 	id_materiau   INT  NOT NULL  ,
 	CONSTRAINT meuble_PK PRIMARY KEY (id_meuble)
 
-	,CONSTRAINT meuble_type_meuble_FK FOREIGN KEY (id_type) REFERENCES public.type_meuble(id_type)
-	,CONSTRAINT meuble_materiau0_FK FOREIGN KEY (id_materiau) REFERENCES public.materiau(id_materiau)
+	,CONSTRAINT meuble_type_meuble_FK FOREIGN KEY (id_type) REFERENCES ikeem.type_meuble(id_type)
+	,CONSTRAINT meuble_materiau0_FK FOREIGN KEY (id_materiau) REFERENCES ikeem.materiau(id_materiau)
 )WITHOUT OIDS;
 
 
 ------------------------------------------------------------
 -- Table: ligne_commande
 ------------------------------------------------------------
-CREATE TABLE public.ligne_commande(
+CREATE TABLE ikeem.ligne_commande(
 	id_meuble     INT  NOT NULL ,
 	id_commande   INT  NOT NULL ,
 	prix          INT  NOT NULL ,
 	quantite      INT  NOT NULL  ,
 	CONSTRAINT ligne_commande_PK PRIMARY KEY (id_meuble,id_commande)
 
-	,CONSTRAINT ligne_commande_meuble_FK FOREIGN KEY (id_meuble) REFERENCES public.meuble(id_meuble)
-	,CONSTRAINT ligne_commande_commande0_FK FOREIGN KEY (id_commande) REFERENCES public.commande(id_commande)
+	,CONSTRAINT ligne_commande_meuble_FK FOREIGN KEY (id_meuble) REFERENCES ikeem.meuble(id_meuble)
+	,CONSTRAINT ligne_commande_commande0_FK FOREIGN KEY (id_commande) REFERENCES ikeem.commande(id_commande)
 )WITHOUT OIDS;
 
 
 ------------------------------------------------------------
 -- Table: ligne_panier
 ------------------------------------------------------------
-CREATE TABLE public.ligne_panier(
+CREATE TABLE ikeem.ligne_panier(
 	id_meuble        INT  NOT NULL ,
 	id_utilisateur   INT  NOT NULL ,
 	quantite         INT  NOT NULL ,
 	date_ajout       DATE  NOT NULL  ,
 	CONSTRAINT ligne_panier_PK PRIMARY KEY (id_meuble,id_utilisateur)
 
-	,CONSTRAINT ligne_panier_meuble_FK FOREIGN KEY (id_meuble) REFERENCES public.meuble(id_meuble)
-	,CONSTRAINT ligne_panier_utilisateur0_FK FOREIGN KEY (id_utilisateur) REFERENCES public.utilisateur(id_utilisateur)
+	,CONSTRAINT ligne_panier_meuble_FK FOREIGN KEY (id_meuble) REFERENCES ikeem.meuble(id_meuble)
+	,CONSTRAINT ligne_panier_utilisateur0_FK FOREIGN KEY (id_utilisateur) REFERENCES ikeem.utilisateur(id_utilisateur)
 )WITHOUT OIDS;
-
-
 
