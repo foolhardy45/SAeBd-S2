@@ -164,7 +164,10 @@ INSERT INTO ikeem.commande (id_commande, date_achat, id_etat, id_utilisateur) VA
 (12, '2024-03-12', 12, 2),
 (13, '2024-03-13', 13, 3),
 (14, '2024-03-14', 14, 4),
-(15, '2024-03-15', 15, 5);
+(15, '2024-03-15', 15, 5),
+(16, '2024-03-15', 2, 14),  -- Commande pour un utilisateur avec le rôle 'Staff'
+(17, '2024-03-16', 3, 15),  -- Commande pour un utilisateur avec le rôle 'Stagiaire'
+(18, '2024-03-17', 2, 1);
 
 INSERT INTO ikeem.materiau (id_materiau, libelle_materiau) VALUES
 (1, 'Bois'),
