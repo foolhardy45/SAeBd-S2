@@ -130,7 +130,8 @@ INSERT INTO ikeem.utilisateur (id_utilisateur, login, email, nom, pwd, user_role
 (12, 'Bob', 'bob@email.com', 'Bob', 'B0bPa$$w0rd', 'Client'),
 (13, 'Eva', 'eva@email.com', 'Eva', 'Ev@123', 'Client'),
 (14, 'Maxime', 'maxime@email.com', 'Maxime', 'M@x!m3', 'Staff'),
-(15, 'Sophie', 'sophie@email.com', 'Sophie', 'S0ph!e123', 'Stagiaire');
+(15, 'Sophie', 'sophie@email.com', 'Sophie', 'S0ph!e123', 'Stagiaire'),
+(16, 'Claudia', 'claudia@email.com', 'Claudia', 'Claud1@2023', 'Staff');
 
 INSERT INTO ikeem.etat (id_etat, libelle) VALUES
 (1, 'En attente'),
@@ -165,8 +166,8 @@ INSERT INTO ikeem.commande (id_commande, date_achat, id_etat, id_utilisateur) VA
 (13, '2024-03-13', 13, 3),
 (14, '2024-03-14', 14, 4),
 (15, '2024-03-15', 15, 5),
-(16, '2024-03-15', 2, 14),  -- Commande pour un utilisateur avec le rôle 'Staff'
-(17, '2024-03-16', 3, 15),  -- Commande pour un utilisateur avec le rôle 'Stagiaire'
+(16, '2024-04-04', 1, 16),
+(17, '2024-03-16', 3, 16), 
 (18, '2024-03-17', 2, 1);
 
 INSERT INTO ikeem.materiau (id_materiau, libelle_materiau) VALUES
@@ -224,8 +225,8 @@ INSERT INTO ikeem.ligne_commande (ID_MEUBLE, ID_COMMANDE, PRIX, QUANTITE) VALUES
 (1, 1, 50.99, 2),
 (2, 2, 129.99, 1),
 (3, 3, 199.99, 3),
-(4, 4, 499.99, 1),
-(5, 5, 299.99, 1),
+(4, 16, 499.99, 1),
+(5, 16, 299.99, 1),
 (6, 6, 189.99, 1),
 (7, 7, 79.99, 2),
 (8, 8, 129.99, 1),
